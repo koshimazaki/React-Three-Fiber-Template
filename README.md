@@ -27,6 +27,23 @@ This Bash script automates the setup of a React Three Fiber (R3F) project using 
 - **Interactive Menu**: 
   - After setup, the script presents an interactive menu for starting the development server or exiting.
 
+## Dependencies as of now:
+
+- React and React DOM: 19.1.0
+- Three.js: 0.176.0
+- @react-three/fiber: 9.1.2
+- @react-three/drei: 10.0.7
+- @react-three/postprocessing: 3.0.4
+- Material UI: 7.0.2
+- Emotion: 11.14.0
+- Framer Motion: 12.9.2
+- Zustand: 5.0.3
+- Postprocessing: 6.37.3
+- Three-mesh-bvh: 0.9.0
+- Vite: 6.3.3
+- @vitejs/plugin-react: 4.4.1
+
+
 ## Usage
 
 To give permissions run: 
