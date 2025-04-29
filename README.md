@@ -26,7 +26,7 @@ This Bash script automates the setup of a React Three Fiber (R3F) project using 
   - Provides a CSS file (`index.css`) for basic styling and fullscreen canvas setup.
 - **Interactive Menu**: 
   - After setup, the script presents an interactive menu for starting the development server or exiting.
-- ** MDC file with Cursor rules:
+- **MDC file with Cursor rules**:
   - MDC file and example files are copied to the project from the root. 
 
 ## Dependencies as of now:
