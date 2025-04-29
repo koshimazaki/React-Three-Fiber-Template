@@ -21,6 +21,19 @@ if [ "$2" = "--latest" ]; then
   USE_LATEST=true
 fi
 
+# Get the absolute path of the script directory
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+echo "Script directory: $SCRIPT_DIR"
+
+# Check if required files exist
+for file in r3f.mdc model-component.jsx ui-component.jsx zustand-store.js vertex-shader.glsl fragment-shader.glsl; do
+  if [ ! -f "$SCRIPT_DIR/$file" ]; then
+    echo "Error: Required file $file not found in $SCRIPT_DIR"
+    echo "Please make sure all required files are in the same directory as the script."
+    exit 1
+  fi
+done
+
 # Create the Vite project with React JavaScript template
 echo "Creating Vite project..."
 npm create vite@latest $PROJECT_NAME -- --template react
@@ -165,6 +178,44 @@ body,
   overflow: hidden;
 }
 EOL
+
+# Create recommended directory structure
+mkdir -p src/components/ui
+mkdir -p src/components/three/objects
+mkdir -p src/components/three/effects
+mkdir -p src/components/three/scenes
+mkdir -p src/hooks
+mkdir -p src/store
+mkdir -p src/shaders/vertex
+mkdir -p src/shaders/fragment
+mkdir -p src/utils
+mkdir -p src/assets/models
+mkdir -p src/assets/textures
+
+# Create Cursor rules directory and copy rules files
+echo "Setting up Cursor rules..."
+mkdir -p .cursor/rules
+
+# Copy r3f.mdc and related files from the script directory
+PROJECT_DIR="$(pwd)"
+echo "Project directory: $PROJECT_DIR"
+echo "Copying rule files from $SCRIPT_DIR to $PROJECT_DIR/.cursor/rules/"
+
+# Copy with verbose output for debugging
+cp -v "$SCRIPT_DIR/r3f.mdc" "$PROJECT_DIR/.cursor/rules/"
+cp -v "$SCRIPT_DIR/model-component.jsx" "$PROJECT_DIR/.cursor/rules/"
+cp -v "$SCRIPT_DIR/ui-component.jsx" "$PROJECT_DIR/.cursor/rules/"
+cp -v "$SCRIPT_DIR/zustand-store.js" "$PROJECT_DIR/.cursor/rules/"
+cp -v "$SCRIPT_DIR/vertex-shader.glsl" "$PROJECT_DIR/.cursor/rules/"
+cp -v "$SCRIPT_DIR/fragment-shader.glsl" "$PROJECT_DIR/.cursor/rules/"
+
+# Check if files were copied successfully
+if [ -f "$PROJECT_DIR/.cursor/rules/r3f.mdc" ]; then
+  echo "Cursor rules installed successfully."
+  ls -la "$PROJECT_DIR/.cursor/rules/"
+else
+  echo "Warning: Failed to copy rule files. Please copy them manually."
+fi
 
 # Interactive menu function
 show_menu() {
