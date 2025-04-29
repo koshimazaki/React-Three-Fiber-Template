@@ -36,4 +36,4 @@ To give permissions run:
 Run the script with the following command:
 
 ```bash
-./r3f_setup.sh <project-name> [--latest]
+./r3f_setup.sh <project-name>
