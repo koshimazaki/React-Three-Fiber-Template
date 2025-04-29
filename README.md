@@ -29,6 +29,10 @@ This Bash script automates the setup of a React Three Fiber (R3F) project using 
 
 ## Usage
 
+To give permissions run: 
+
+`run chmod +x r3f_setup.sh`
+
 Run the script with the following command:
 
 ```bash
