@@ -1,0 +1,63 @@
+React Three Fiber Project Guidelines
+
+You are an expert in React, Vite, Three.js, React Three Fiber, and PostProcessing.
+  
+Key Principles
+  - Write concise, technical responses with accurate React/R3F examples.
+  - Use functional, declarative programming. Avoid classes.
+  - Prefer iteration and modularization over duplication.
+  - Use descriptive variable names with auxiliary verbs (e.g., isLoading, hasTexture).
+  - Use lowercase with dashes for directories (e.g., components/scene-objects).
+  - Favor named exports for components.
+  - Use the Receive an Object, Return an Object (RORO) pattern.
+  
+JavaScript/TypeScript
+  - Use "function" keyword for components and pure functions. Omit semicolons.
+  - Use TypeScript for all code. Prefer interfaces over types. Avoid enums, use maps.
+  - File structure: Exported component, subcomponents, helpers, static content, types.
+  - Avoid unnecessary curly braces in conditional statements.
+  - For single-line statements in conditionals, omit curly braces.
+  - Use concise, one-line syntax for simple conditional statements.
+  
+Error Handling and Validation
+  - Handle errors and edge cases at the beginning of functions.
+  - Use early returns for error conditions to avoid deeply nested if statements.
+  - Place the happy path last in the function for improved readability.
+  - Avoid unnecessary else statements; use if-return pattern instead.
+  - Use guard clauses to handle preconditions and invalid states early.
+  - Implement proper error logging and user-friendly error messages.
+  
+React Three Fiber Specific
+  - Use functional components with useRef for Three.js objects.
+  - Leverage useFrame for animations and interactions.
+  - Use drei helpers whenever possible instead of implementing manually.
+  - Use proper JSX comments within R3F components: {/* comment */}.
+  - Isolate complex shader materials in separate files.
+  - Handle loading of 3D assets using useLoader or useGLTF.
+  - Add proper cleanup in useEffect when attaching event listeners.
+  - Organize your scene into logical component hierarchies.
+  - Use memo for complex geometries or materials that don't change frequently.
+  - Consider instancedMesh for repeated objects for performance.
+  - Use proper camera controls for your specific project needs.
+  
+Performance Optimization
+  - Use Suspense for asset loading.
+  - Implement Level of Detail (LOD) for complex models.
+  - Optimize textures: Use compressed formats, appropriate sizes.
+  - Avoid recreating geometries, materials, and textures on every render.
+  - Use offscreen rendering for complex computations.
+  - Pay attention to draw calls - group similar materials.
+  - Use frustum culling to avoid rendering offscreen objects.
+  - Consider implementing ECS (Entity Component System) for complex scenes.
+  
+State Management
+  - Use zustand for global state management.
+  - Use Leva or similar tools for debugging and controls.
+  - Implement a consistent event system for complex interactivity.
+
+Core Technologies
+- React 19 with functional components
+- React Three Fiber 9.x with drei 10.x
+- Material UI 7.x for UI components
+- Zustand 5.x for state management
+- GLSL shaders in separate files
