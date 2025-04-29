@@ -1,5 +1,8 @@
 #!/bin/bash
 
+
+# run chmod +x r3f_setup.sh
+
 # Usage: ./r3f_setup.sh <project-name> [--latest]
 # Example: ./r3f_setup.sh my-r3f-project --latest
 
@@ -55,26 +58,26 @@ if [ "$USE_LATEST" = true ]; then
   install_latest "react-device-detect"
   install_latest "three-mesh-bvh"
 else
-  install_specific "react" "18.3.1"
-  install_specific "react-dom" "18.3.1"
-  install_specific "three" "0.165.0"
-  install_specific "@react-three/fiber" "8.17.10"
-  install_specific "@react-three/drei" "9.114.4"
-  install_specific "@react-three/postprocessing" "2.16.2"
-  install_specific "@mui/material" "6.1.2"
-  install_specific "@mui/icons-material" "6.1.2"
-  install_specific "@emotion/react" "11.13.3"
-  install_specific "@emotion/styled" "11.13.0"
-  install_specific "framer-motion" "11.11.1"
-  install_specific "zustand" "5.0.0"
+  install_specific "react" "19.1.0"
+  install_specific "react-dom" "19.1.0"
+  install_specific "three" "0.176.0"
+  install_specific "@react-three/fiber" "9.1.2"
+  install_specific "@react-three/drei" "10.0.7"
+  install_specific "@react-three/postprocessing" "3.0.4"
+  install_specific "@mui/material" "7.0.2"
+  install_specific "@mui/icons-material" "7.0.2" 
+  install_specific "@emotion/react" "11.14.0"
+  install_specific "@emotion/styled" "11.14.0"
+  install_specific "framer-motion" "12.9.2"
+  install_specific "zustand" "5.0.3"
   install_specific "maath" "0.10.8"
-  install_specific "postprocessing" "6.36.0"
+  install_specific "postprocessing" "6.37.3"
   install_specific "react-device-detect" "2.2.3"
-  install_specific "three-mesh-bvh" "0.8.0"
+  install_specific "three-mesh-bvh" "0.9.0"
 fi
 
 # Install dev dependencies
-npm install -D @vitejs/plugin-react@4.3.1 vite@5.4.0
+npm install -D @vitejs/plugin-react@4.4.1 vite@6.3.3
 
 # Update package.json
 echo "Updating package.json..."
@@ -84,7 +87,7 @@ npm pkg set scripts.dev3="e2e-dev \$npm_package_name"
 npm pkg set scripts.build="vite build"
 npm pkg set scripts.build2="e2e-build \$npm_package_name"
 npm pkg set scripts.preview="vite preview --host"
-npm pkg set resolutions.three-mesh-bvh="^0.8.0"
+npm pkg set resolutions.three-mesh-bvh="^0.9.0"
 
 # Add a post-install script to package.json for future updates
 npm pkg set scripts.update-deps="npm update --latest"
@@ -113,8 +116,8 @@ import { useFrame } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 
 
-// Colors  palette 
-//https://coolors.co/fc0398-e25259-e66255-ea7250-f19146-ffcf33-42d5ca-03d7fc-0f4757-15171a
+// Colors palette 
+// https://coolors.co/fc0398-e25259-e66255-ea7250-f19146-ffcf33-42d5ca-03d7fc-0f4757-15171a
 
 export default function Experience() {
   const cubeRef = useRef()
@@ -126,7 +129,8 @@ export default function Experience() {
 
   return (
     <>
-      <color attach="background" args={["#15171A"]} /> // dark grey 
+      {/* dark grey background */}
+      <color attach="background" args={["#15171A"]} />
       <OrbitControls />
       <ambientLight intensity={0.5} />
       <directionalLight position={[10, 10, 5]} intensity={1} />
@@ -134,13 +138,15 @@ export default function Experience() {
       {/* Spinning cube */}
       <mesh ref={cubeRef}>
         <boxGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial color="#fc0398" /> // pink 
+        {/* pink */}
+        <meshStandardMaterial color="#fc0398" />
       </mesh>
       
       {/* Floor */}
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -1, 0]}>
         <planeGeometry args={[10, 10]} />
-        <meshStandardMaterial color="#03d7fc" /> // blue 
+        {/* blue */}
+        <meshStandardMaterial color="#03d7fc" />
       </mesh>
     </>
   )
